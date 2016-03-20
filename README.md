@@ -36,6 +36,9 @@ yo reactengine:model [options] <modelName>
 ```bash
 yo reactengine:model book
 ```
+<p>
+  <img src="./ScreenShots/CreateModel.png" width="340">
+</p>
 会在 ```你的工程目录/src/services/strongloop/models``` 下生成一个 ```Book.js``` 文件,封装了 ```create/find/findById/findOne/count/exists/update/updateOrCreate/updateAttributes/deleteById``` 等方法,用于和服务器交互.   
 你也可以通过修改  ```Book.js``` 来扩展该 Model.   
 具体请参考 [ReactEngine](https://github.com/ReactEngine/ReactEngine).
@@ -60,13 +63,16 @@ yo reactengine:module [options] <moduleName>
 | 参数   	  | 	描述 		| 	类型   | 	是否必须 |
 | ----------- | -------------- | ------- | ---------- |
 | moduleName  |    模块名称     | 字符串   |     是      |
-
+ds
 #### 实例
 
 如下命令   
 ```bash
 yo reactengine:module todo
 ```
+<p>
+  <img src="./ScreenShots/CreateModule.png" width="450">
+</p>
 会在 ```你的工程目录/src/modules``` 下创建一个 ```todo``` 文件夹,    包含了redux 需要的 ```actions/constants/components/containers/reducers ``` 等文件,包含一个简单的列表和增删改查等流程.
 你可以修改该 modules 来快速开发.  
 具体请参考 [ReactEngine](https://github.com/ReactEngine/ReactEngine).
