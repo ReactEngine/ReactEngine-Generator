@@ -15,23 +15,6 @@ module.exports = generators.Base.extend({
       name: 'name',
       message: 'What is the name of your project?',
       default: 'react-redux-starter',
-    }, {
-      name: 'description',
-      message: 'What is the description of your project?',
-    }, {
-      name: 'version',
-      message: 'What is the version of your project?',
-      default: '0.0.0',
-    }, {
-      name: 'license',
-      message: 'How is your project licensed?',
-      default: 'MIT',
-    }, {
-      name: 'author',
-      message: 'What is your name?',
-    }, {
-      name: 'email',
-      message: 'What is your email address?',
     }];
 
     return prompts;
@@ -39,11 +22,6 @@ module.exports = generators.Base.extend({
 
   _saveAnswers: function(answers, callback) {
     this.appName = answers.name;
-    this.appDescription = answers.description;
-    this.appVersion = answers.version;
-    this.appLicense = answers.license;
-    this.appAuthor = answers.author;
-    this.appEmail = answers.email;
     callback();
   },
 
@@ -57,11 +35,11 @@ module.exports = generators.Base.extend({
   },
 
   prompting: function() {
-    // var done = this.async();
+    var done = this.async();
 
-    // this.prompt(this._getPrompts(), function(answers) {
-    //   this._saveAnswers(answers, done);
-    // }.bind(this));
+    this.prompt(this._getPrompts(), function(answers) {
+      this._saveAnswers(answers, done);
+    }.bind(this));
 
   },
 
