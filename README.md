@@ -72,9 +72,9 @@ yo reactengine:module todo
 具体请参考 [ReactEngine](https://github.com/ReactEngine/ReactEngine).
 相关截图:  
 <p>
-  <img src="./ScreenShots/ModuleAdd.png" alt="App Screenshot" width="250" style="margin-right: 10px">
-  <img src="./ScreenShots/ModuleList.png" alt="App Screenshot" width="250" style="margin-right: 10px">
-  <img src="./ScreenShots/ModuleUpdate.png" alt="App Screenshot" width="250" style="margin-right: 10px">
-  <img src="./ScreenShots/ModuleDelete.png" alt="App Screenshot" width="250" style="margin-right: 10px">
-  <img src="./ScreenShots/ModuleEmpty.png" alt="App Screenshot" width="250" style="margin-right: 10px">
+  <img src="./ScreenShots/ModuleAdd.png" alt="App Screenshot" width="250"  style="margin-right: 10px;margin-bottom: 20px;">
+  <img src="./ScreenShots/ModuleList.png" alt="App Screenshot" width="250"  style="margin-right: 10px;margin-bottom: 20px;">
+  <img src="./ScreenShots/ModuleUpdate.png" alt="App Screenshot" width="250"  style="margin-right: 10px;margin-bottom: 20px;">
+  <img src="./ScreenShots/ModuleDelete.png" alt="App Screenshot" width="250"  style="margin-right: 10px;margin-bottom: 20px;">
+  <img src="./ScreenShots/ModuleEmpty.png" alt="App Screenshot" width="250"  style="margin-right: 10px;margin-bottom: 20px;">
 </p>
