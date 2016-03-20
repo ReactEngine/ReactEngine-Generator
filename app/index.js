@@ -30,7 +30,7 @@ module.exports = generators.Base.extend({
   },
 
   initializing: function() {
-    var message = chalk.bgBlack.bold('\nWelcome to ReactEngine\n') + chalk.underline('https://reactengine.github.io\n');
+    var message = chalk.bgBlack.bold('\nWelcome to ReactEngine\n') + chalk.underline('reactengine.github.io\n');
     this.log(yosay(message));
   },
 
