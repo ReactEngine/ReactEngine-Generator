@@ -1,5 +1,5 @@
 {
-  "name": "Generator-ReactEngine",
+  "name": "generator-reactengine",
   "version": "0.0.1",
   "description": "React Engine code generator using Yeoman",
   "main": "app/index.js",
