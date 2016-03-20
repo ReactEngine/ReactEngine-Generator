@@ -1,6 +1,6 @@
 {
   "name": "generator-reactengine",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Engine code generator using Yeoman",
   "main": "app/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ReactEngine/ReactEngine-Generator.git"
+    "url": "git+https://github.com/ReactEngine/generator-reactengine.git"
   },
   "keywords": [
     "react",
@@ -21,9 +21,9 @@
   "author": "Jason (ciyinhuang@gmail.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ReactEngine/ReactEngine-Generator/issues"
+    "url": "https://github.com/ReactEngine/generator-reactengine/issues"
   },
-  "homepage": "https://github.com/ReactEngine/ReactEngine-Generator#readme",
+  "homepage": "https://github.com/ReactEngine/generator-reactengine#readme",
   "dependencies": {
     "chalk": "^1.1.1",
     "gulp-git": "^1.6.0",
