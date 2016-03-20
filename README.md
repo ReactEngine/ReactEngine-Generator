@@ -1,6 +1,8 @@
-# ReactEngine-Generator
+# generator-reactengine
 
-ReactEngine 代码生成器(基于 yoman)  
+ReactEngine 代码生成器(基于 yoman).  
+[ReactEngine](https://github.com/ReactEngine/ReactEngine) 是一个基于 [Reac Native](https://facebook.github.io/react-native) + [Redux](https://github.com/reactjs/redux) + [Strongloop](https://strongloop.com) 的快速开发框架.  
+目的: 快速开发,原则上一个 JS 工程师可以搞定 iOS/Android/Server 开发.  
 
 # 安装
 ```bash
@@ -34,7 +36,8 @@ yo reactengine:model [options] <modelName>
 ```bash
 yo reactengine:model book
 ```
-会在 ```你的工程目录/src/services/strongloop/models``` 下生成一个 ```Book.js``` 文件,     ```Book``` Model 封装了 ```create/find/findById/findOne/count/exists/update/updateOrCreate/updateAttributes/deleteById``` 等方法,用于和服务器交互.你也可以在  ```Book.js``` 扩展该 Model.   
+会在 ```你的工程目录/src/services/strongloop/models``` 下生成一个 ```Book.js``` 文件,封装了 ```create/find/findById/findOne/count/exists/update/updateOrCreate/updateAttributes/deleteById``` 等方法,用于和服务器交互.   
+你也可以通过修改  ```Book.js``` 来扩展该 Model.   
 具体请参考 [ReactEngine](https://github.com/ReactEngine/ReactEngine).
 
 
@@ -64,7 +67,8 @@ yo reactengine:module [options] <moduleName>
 ```bash
 yo reactengine:module todo
 ```
-会在 ```你的工程目录/src/modules``` 下创建一个 ```todo``` 文件夹,    包含了redux 需要的 ```actions/constants/components/containers/reducers ``` 等组件,一个简单的列表和可以跑通的增删改查的流程.  
+会在 ```你的工程目录/src/modules``` 下创建一个 ```todo``` 文件夹,    包含了redux 需要的 ```actions/constants/components/containers/reducers ``` 等组件,一个简单的列表和可以跑通的增删改查的流程.
+你可以修改该 modules 来快速开发.  
 具体请参考 [ReactEngine](https://github.com/ReactEngine/ReactEngine).
 相关截图:  
 <p>
