@@ -1,7 +1,7 @@
 # generator-reactengine
 
 ReactEngine 代码生成器(基于 yoman).  
-[ReactEngine](https://github.com/ReactEngine/ReactEngine) 是一个基于 [Reac Native](https://facebook.github.io/react-native) + [Redux](https://github.com/reactjs/redux) + [Strongloop](https://strongloop.com) 的快速开发框架.  
+说明: [ReactEngine](https://github.com/ReactEngine/ReactEngine) 是一个基于 [Reac Native](https://facebook.github.io/react-native) + [Redux](https://github.com/reactjs/redux) + [Strongloop](https://strongloop.com) 的快速开发框架.  
 目的: 快速开发,原则上一个 JS 工程师可以搞定 iOS/Android/Server 开发.  
 
 # 安装
@@ -67,14 +67,14 @@ yo reactengine:module [options] <moduleName>
 ```bash
 yo reactengine:module todo
 ```
-会在 ```你的工程目录/src/modules``` 下创建一个 ```todo``` 文件夹,    包含了redux 需要的 ```actions/constants/components/containers/reducers ``` 等组件,一个简单的列表和可以跑通的增删改查的流程.
+会在 ```你的工程目录/src/modules``` 下创建一个 ```todo``` 文件夹,    包含了redux 需要的 ```actions/constants/components/containers/reducers ``` 等文件,包含一个简单的列表和增删改查等流程.
 你可以修改该 modules 来快速开发.  
 具体请参考 [ReactEngine](https://github.com/ReactEngine/ReactEngine).
 相关截图:  
 <p>
-  <img src="./ScreenShots/ModuleList.png" alt="App Screenshot" width="300">
-  <img src="./ScreenShots/ModuleAdd.png" alt="App Screenshot" width="300">
-  <img src="./ScreenShots/ModuleUpdate.png" alt="App Screenshot" width="300">
-  <img src="./ScreenShots/ModuleDelete.png" alt="App Screenshot" width="300">
-  <img src="./ScreenShots/ModuleEmpty.png" alt="App Screenshot" width="300">
+  <img src="./ScreenShots/ModuleAdd.png" alt="App Screenshot" width="250" style="margin-right: 10px">
+  <img src="./ScreenShots/ModuleList.png" alt="App Screenshot" width="250" style="margin-right: 10px">
+  <img src="./ScreenShots/ModuleUpdate.png" alt="App Screenshot" width="250" style="margin-right: 10px">
+  <img src="./ScreenShots/ModuleDelete.png" alt="App Screenshot" width="250" style="margin-right: 10px">
+  <img src="./ScreenShots/ModuleEmpty.png" alt="App Screenshot" width="250" style="margin-right: 10px">
 </p>
