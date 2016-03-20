@@ -89,7 +89,7 @@ yo reactengine:module todo
 </p>
 
 会在 ```你的工程目录/src/modules``` 下创建一个 ```todo``` 文件夹,    包含了redux 需要的 ```actions/constants/components/containers/reducers ``` 等文件,包含一个简单的列表和增删改查等流程.   
-你可以修改该 modules 来快速开发.  
+你可以修改该 module 来快速开发.  
 具体请参考 [ReactEngine](https://github.com/ReactEngine/ReactEngine).   
 
 相关截图:  
