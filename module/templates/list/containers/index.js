@@ -37,11 +37,11 @@ function mapDispatchToProps(dispatch) {
 class ListContainer extends Component {
   componentWillReceiveProps(nextprops) {
     console.log(">>>>>>>>>> DetailContainer componentWillReceiveProps nextprops:",nextprops)
-    // const currentViewNextProps = nextprops.<%= moduleCommonName %>Detail
+    // const currentViewNextProps = nextprops.<%= moduleName_lowerCase %>Detail
     this.setState({
-      shouldRefresh:nextprops.<%= moduleCommonName %>List.shouldRefresh,
-      data: nextprops.<%= moduleCommonName %>List.data,
-      options:nextprops.<%= moduleCommonName %>List.options
+      shouldRefresh:nextprops.<%= moduleName_lowerCase %>List.shouldRefresh,
+      data: nextprops.<%= moduleName_lowerCase %>List.data,
+      options:nextprops.<%= moduleName_lowerCase %>List.options
     })
   }
   _renderRowView(item) {
@@ -85,7 +85,7 @@ class ListContainer extends Component {
    }
 
   render() {
-    // if(this.props.<%= moduleCommonName %>List.shouldRefresh){
+    // if(this.props.<%= moduleName_lowerCase %>List.shouldRefresh){
     //   this.onFetch()
     // }
     console.log("======== list container render,state:",this.state," props:",this.props)
@@ -95,7 +95,7 @@ class ListContainer extends Component {
    var rightButtonConfig = {
       title: 'Add',
       handler: ()=>{
-        routerActions.<%= moduleCommonName %>Detail()
+        routerActions.<%= moduleName_lowerCase %>Detail()
         //改 detail 的 state
         this.props.actions.routerChange({
           fields:{}, title:"Add <%= moduleName %>"
@@ -114,8 +114,8 @@ class ListContainer extends Component {
 
           actions={this.props.actions}
 
-          fetchedData={this.props.<%= moduleCommonName %>List.data}
-          fetchOptions={this.props.<%= moduleCommonName %>List.options}
+          fetchedData={this.props.<%= moduleName_lowerCase %>List.data}
+          fetchOptions={this.props.<%= moduleName_lowerCase %>List.options}
           
           initialListSize={12}
           firstLoader={true}

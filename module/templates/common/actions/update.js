@@ -4,9 +4,9 @@ const ApiFactory = require('../../../../services/api').default
 
 const {
 
-  TODO_UPDATE_REQUEST_START,
-  TODO_UPDATE_REQUEST_SUCCESS,
-  TODO_UPDATE_REQUEST_FAILURE,
+  <%= moduleName_upperCase%>_UPDATE_REQUEST_START,
+  <%= moduleName_upperCase%>_UPDATE_REQUEST_SUCCESS,
+  <%= moduleName_upperCase%>_UPDATE_REQUEST_FAILURE,
 
 } = require('../constants').default
 
@@ -14,19 +14,19 @@ const {
 //update
 export function updateRequestStart() {
   return {
-    type: TODO_UPDATE_REQUEST_START
+    type: <%= moduleName_upperCase%>_UPDATE_REQUEST_START
   }
 }
 export function updateRequestSuccess(data) {
   return {
-    type: TODO_UPDATE_REQUEST_SUCCESS,
+    type: <%= moduleName_upperCase%>_UPDATE_REQUEST_SUCCESS,
     payload: data
   }
 }
 
 export function updateRequestFailure(error) {
   return {
-    type: TODO_UPDATE_REQUEST_FAILURE,
+    type: <%= moduleName_upperCase%>_UPDATE_REQUEST_FAILURE,
     payload: error
   }
 }
@@ -35,7 +35,7 @@ export function update(where,data) {
   return dispatch => {
     //请求开始
     dispatch(updateRequestStart())
-    return  ApiFactory().<%= moduleCommonName %>.update(where,data)
+    return  ApiFactory().<%= moduleName_lowerCase %>.update(where,data)
       .then((res) => {
           //请求成功
           dispatch(updateRequestSuccess({

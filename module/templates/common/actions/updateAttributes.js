@@ -4,28 +4,28 @@ const ApiFactory = require('../../../../services/api').default
 
 const {
 
-  TODO_UPDATEATTRIBUTES_REQUEST_START,
-  TODO_UPDATEATTRIBUTES_REQUEST_SUCCESS,
-  TODO_UPDATEATTRIBUTES_REQUEST_FAILURE,
+  <%= moduleName_upperCase%>_UPDATEATTRIBUTES_REQUEST_START,
+  <%= moduleName_upperCase%>_UPDATEATTRIBUTES_REQUEST_SUCCESS,
+  <%= moduleName_upperCase%>_UPDATEATTRIBUTES_REQUEST_FAILURE,
 
 } = require('../constants').default
 
 //updateAttributes
 export function updateAttributesRequestStart() {
   return {
-    type: TODO_UPDATEATTRIBUTES_REQUEST_START
+    type: <%= moduleName_upperCase%>_UPDATEATTRIBUTES_REQUEST_START
   }
 }
 export function updateAttributesRequestSuccess(json) {
   return {
-    type: TODO_UPDATEATTRIBUTES_REQUEST_SUCCESS,
+    type: <%= moduleName_upperCase%>_UPDATEATTRIBUTES_REQUEST_SUCCESS,
     payload: json
   }
 }
 
 export function updateAttributesRequestFailure(error) {
   return {
-    type: TODO_UPDATEATTRIBUTES_REQUEST_FAILURE,
+    type: <%= moduleName_upperCase%>_UPDATEATTRIBUTES_REQUEST_FAILURE,
     payload: error
   }
 }
@@ -34,7 +34,7 @@ export function updateAttributes(id,data) {
   return dispatch => {
     //请求开始
     dispatch(updateAttributesRequestStart())
-    return  ApiFactory().<%= moduleCommonName %>.updateAttributes(id,data)
+    return  ApiFactory().<%= moduleName_lowerCase %>.updateAttributes(id,data)
       .then((res) => {
           //请求成功
           dispatch(updateAttributesRequestSuccess({res:res}))

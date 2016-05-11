@@ -17,7 +17,7 @@ import { Actions as routerActions }  from 'react-native-router-flux'
 class Row extends Component {
 	onRowPress(row){
 	  //切换路由
-	  routerActions.<%= moduleCommonName %>Detail()
+	  routerActions.<%= moduleName_lowerCase %>Detail()
 	  //改 detail 的 state
 	  this.props.actions.routerChange({
 	    fields:row, title:row.text

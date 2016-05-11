@@ -3,22 +3,22 @@ const  _ = require('lodash')
 const ApiFactory = require('../../../../services/api').default
 
 const {
-  TODO_FIND_REQUEST_START,
-  TODO_FIND_REQUEST_SUCCESS,
-  TODO_FIND_REQUEST_FAILURE,
+  <%= moduleName_upperCase%>_FIND_REQUEST_START,
+  <%= moduleName_upperCase%>_FIND_REQUEST_SUCCESS,
+  <%= moduleName_upperCase%>_FIND_REQUEST_FAILURE,
 
 } = require('../constants').default
 
 //find
 export function findRequestStart() {
   return {
-    type: TODO_FIND_REQUEST_START
+    type: <%= moduleName_upperCase%>_FIND_REQUEST_START
   }
 }
 
 export function findRequestSuccess(json,options) {
   return {
-    type: TODO_FIND_REQUEST_SUCCESS,
+    type: <%= moduleName_upperCase%>_FIND_REQUEST_SUCCESS,
     payload: json,
     options:options
   }
@@ -26,7 +26,7 @@ export function findRequestSuccess(json,options) {
 
 export function findRequestFailure(error) {
   return {
-    type: TODO_FIND_REQUEST_FAILURE,
+    type: <%= moduleName_upperCase%>_FIND_REQUEST_FAILURE,
     payload: error
   }
 }
@@ -35,7 +35,7 @@ export function find(filter={},options={}) {
   return dispatch => {
     //请求开始
     dispatch(findRequestStart())
-    return  ApiFactory().<%= moduleCommonName %>.find(filter)
+    return  ApiFactory().<%= moduleName_lowerCase %>.find(filter)
       .then((data) => {
           // let rows = {}
           // const page = options.page || '1'

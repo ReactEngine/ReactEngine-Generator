@@ -4,9 +4,9 @@ const ApiFactory = require('../../../../services/api').default
 
 const {
 
-  TODO_COUNT_REQUEST_START,
-  TODO_COUNT_REQUEST_SUCCESS,
-  TODO_COUNT_REQUEST_FAILURE,
+  <%= moduleName_upperCase%>_COUNT_REQUEST_START,
+  <%= moduleName_upperCase%>_COUNT_REQUEST_SUCCESS,
+  <%= moduleName_upperCase%>_COUNT_REQUEST_FAILURE
 
 } = require('../constants').default
 
@@ -14,20 +14,20 @@ const {
 //count
 export function countRequestStart() {
   return {
-    type: TODO_COUNT_REQUEST_START
+    type: <%= moduleName_upperCase%>_COUNT_REQUEST_START
   }
 }
 
 export function countRequestSuccess(json) {
   return {
-    type: TODO_COUNT_REQUEST_SUCCESS,
+    type: <%= moduleName_upperCase%>_COUNT_REQUEST_SUCCESS,
     payload: json
   }
 }
 
 export function countRequestFailure(error) {
   return {
-    type: TODO_COUNT_REQUEST_FAILURE,
+    type: <%= moduleName_upperCase%>_COUNT_REQUEST_FAILURE,
     payload: error
   }
 }

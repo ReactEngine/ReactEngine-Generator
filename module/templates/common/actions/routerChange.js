@@ -4,14 +4,14 @@ const ApiFactory = require('../../../../services/api').default
 
 const {
 
-  TODO_ITEM,
-  TODO_LIST
+  <%= moduleName_upperCase%>_ITEM,
+  <%= moduleName_upperCase%>_LIST
 
 } = require('../constants').default
 
 export function routerChangeStart(payload) {
   return {
-    type: TODO_ITEM,
+    type: <%= moduleName_upperCase%>_ITEM,
     payload:payload
   }
 }
@@ -27,7 +27,7 @@ export function routerChange(payload) {
 
 export function routerChangeToListStart(payload) {
   return {
-    type: TODO_LIST,
+    type: <%= moduleName_upperCase%>_LIST,
     payload:payload
   }
 }

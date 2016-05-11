@@ -4,9 +4,9 @@ const ApiFactory = require('../../../../services/api').default
 
 const {
 
-  TODO_FINDBYID_REQUEST_START,
-  TODO_FINDBYID_REQUEST_SUCCESS,
-  TODO_FINDBYID_REQUEST_FAILURE,
+  <%= moduleName_upperCase%>_FINDBYID_REQUEST_START,
+  <%= moduleName_upperCase%>_FINDBYID_REQUEST_SUCCESS,
+  <%= moduleName_upperCase%>_FINDBYID_REQUEST_FAILURE,
 
 } = require('../constants').default
 
@@ -14,20 +14,20 @@ const {
 //findById
 export function findByIdRequestStart() {
   return {
-    type: TODO_FINDBYID_REQUEST_START
+    type: <%= moduleName_upperCase%>_FINDBYID_REQUEST_START
   }
 }
 
 export function findByIdRequestSuccess(json) {
   return {
-    type: TODO_FINDBYID_REQUEST_SUCCESS,
+    type: <%= moduleName_upperCase%>_FINDBYID_REQUEST_SUCCESS,
     payload: json
   }
 }
 
 export function findByIdRequestFailure(error) {
   return {
-    type: TODO_FINDBYID_REQUEST_FAILURE,
+    type: <%= moduleName_upperCase%>_FINDBYID_REQUEST_FAILURE,
     payload: error
   }
 }

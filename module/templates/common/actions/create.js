@@ -4,29 +4,29 @@ const ApiFactory = require('../../../../services/api').default
 import * as findActions from './find'
 const {
 
-  TODO_CREATE_REQUEST_START,
-  TODO_CREATE_REQUEST_SUCCESS,
-  TODO_CREATE_REQUEST_FAILURE,
+  <%= moduleName_upperCase%>_CREATE_REQUEST_START,
+  <%= moduleName_upperCase%>_CREATE_REQUEST_SUCCESS,
+  <%= moduleName_upperCase%>_CREATE_REQUEST_FAILURE,
 
 } = require('../constants').default
 
 //create
 export function createRequestStart() {
   return {
-    type: TODO_CREATE_REQUEST_START
+    type: <%= moduleName_upperCase%>_CREATE_REQUEST_START
   }
 }
 
 export function createRequestSuccess(json) {
   return {
-    type: TODO_CREATE_REQUEST_SUCCESS,
+    type: <%= moduleName_upperCase%>_CREATE_REQUEST_SUCCESS,
     payload: json
   }
 }
 
 export function createRequestFailure(error) {
   return {
-    type: TODO_CREATE_REQUEST_FAILURE,
+    type: <%= moduleName_upperCase%>_CREATE_REQUEST_FAILURE,
     payload: error
   }
 }
@@ -36,7 +36,7 @@ export function create(data) {
   return dispatch => {
     //请求开始
     dispatch(createRequestStart())
-    return  ApiFactory().<%= moduleCommonName %>.create(data)
+    return  ApiFactory().<%= moduleName_lowerCase %>.create(data)
       .then((res) => {
           //请求成功
           dispatch(createRequestSuccess({res:res}))
@@ -46,7 +46,7 @@ export function create(data) {
           // const options={}
           // //请求开始
           // dispatch(findActions.findRequestStart())
-          // ApiFactory().<%= moduleCommonName %>.find(filter)
+          // ApiFactory().<%= moduleName_lowerCase %>.find(filter)
           //   .then((data) => {
           //       // let rows = {}
           //       // const page = options.page || '1'

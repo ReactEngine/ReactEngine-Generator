@@ -51,7 +51,7 @@ class DetailContainer extends Component {
   }
   // componentWillReceiveProps(nextprops) {
   //   console.log(">>>>>>>>>> DetailContainer componentWillReceiveProps nextprops:",nextprops)
-  //   // const currentViewNextProps = nextprops.<%= moduleCommonName %>Detail
+  //   // const currentViewNextProps = nextprops.<%= moduleName_lowerCase %>Detail
   //   // this.setState({
   //   //   value: {
   //   //     id: currentViewNextProps.form.fields.id,
@@ -61,17 +61,17 @@ class DetailContainer extends Component {
   //   // })
   // }
   getMode(){
-    const itemId = this.props.<%= moduleCommonName %>Detail.form.fields.id
+    const itemId = this.props.<%= moduleName_lowerCase %>Detail.form.fields.id
     return itemId?'update':'add'
   }
   onButtonPress(){
-    // this.props.actions.updateAttributes(this.props.<%= moduleCommonName %>Detail.form.fields.id,this.state.value)
+    // this.props.actions.updateAttributes(this.props.<%= moduleName_lowerCase %>Detail.form.fields.id,this.state.value)
     const data = {
-          text: this.props.<%= moduleCommonName %>Detail.form.fields.text || "",
-          completed: this.props.<%= moduleCommonName %>Detail.form.fields.completed || false
+          text: this.props.<%= moduleName_lowerCase %>Detail.form.fields.text || "",
+          completed: this.props.<%= moduleName_lowerCase %>Detail.form.fields.completed || false
       }
     if(this.getMode()=='update'){
-      this.props.actions.updateAttributes(this.props.<%= moduleCommonName %>Detail.form.fields.id,data)
+      this.props.actions.updateAttributes(this.props.<%= moduleName_lowerCase %>Detail.form.fields.id,data)
     }else{
       this.props.actions.create(data)
     }
@@ -91,8 +91,8 @@ class DetailContainer extends Component {
     let self = this
     const buttonText = this.getMode()=='update'?'Update':'Add'
 
-    console.log(">>>>>>>>>> DetailContainer render,currentViewProps:",self.props.<%= moduleCommonName %>Detail)
-    self.errorAlert.checkError(self.props.<%= moduleCommonName %>Detail.form.error)
+    console.log(">>>>>>>>>> DetailContainer render,currentViewProps:",self.props.<%= moduleName_lowerCase %>Detail)
+    self.errorAlert.checkError(self.props.<%= moduleName_lowerCase %>Detail.form.error)
 
     return (
       <View style={styles.container}>
@@ -108,11 +108,11 @@ class DetailContainer extends Component {
         <View style={styles.inputs}>
           <DetailForm
               onChange={self.formFieldChange.bind(self)}
-              form={self.props.<%= moduleCommonName %>Detail.form}
+              form={self.props.<%= moduleName_lowerCase %>Detail.form}
           />
         </View>
         <FormButton
-            isDisabled={!self.props.<%= moduleCommonName %>Detail.form.isValid || self.props.<%= moduleCommonName %>Detail.form.isFetching}
+            isDisabled={!self.props.<%= moduleName_lowerCase %>Detail.form.isValid || self.props.<%= moduleName_lowerCase %>Detail.form.isFetching}
             onPress={self.onButtonPress.bind(self)}
             buttonText={buttonText}/>
       </View>
