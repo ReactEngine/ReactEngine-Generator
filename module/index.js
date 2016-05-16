@@ -25,8 +25,6 @@ module.exports = generators.Base.extend({
             moduleDir,
             templateContext
           );
-    //調用替換內容方法,如 替換TEACHER 為 STUDENT
-    this._replaceFileContent(moduleDir,'TEACHER','STUDENT', function () {});
   },
   constructor: function() {
     generators.Base.apply(this, arguments);
@@ -51,40 +49,5 @@ module.exports = generators.Base.extend({
   writing: function() {
     this._createProjectFileSystem();
   },
-  /***
-   * 替換文件夾內所有文件中的字符串
-   * @param dir 需要替換文件夾
-   * @param str 需要被替換掉的字符串
-   * @param replacement 用以替換的字符串
-   * @param done //回調,暫時無用處
-     * @private
-     */
-  _replaceFileContent: function (dir , str, replacement, done) {
-    var self = this;
-    if(typeof str == 'undefined' && typeof replacement == 'undefined'){
-      return;
-    }
-    fs.readdir(dir, function(err, list) {
-      if (err) {
-        return done(err);
-      }
-      if (!list.length) {
-        return done(null);
-      }
-      list.forEach(function(file) {
-        file = path.resolve(dir, file);
-        fs.stat(file, function(err, stat) {
-          if (stat && stat.isDirectory()) {
-            self._replaceFileContent( file , str , replacement , done);
-          }
-          else {
-            var fileData = self.fs.read(file);
-            var reg = new RegExp(str, 'g');
-            var afterReplace = fileData.replace(reg, replacement);
-            self.fs.write(file,afterReplace);
-          }
-        });
-      });
-    })
-  }
+
 });
