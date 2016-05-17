@@ -23,7 +23,7 @@ var copyTemplate = function () {
         * 下载项目
         * @param moduleName
         */
-        downloadFileByCurl: function(moduleName) {
+        downloadFileByCurl: function(moduleName,callback) {
            console.log("tmpDir: "+ this.tmpDir);
            console.log("tmpStr: "+ this.tmpStr);
            console.log("tmpZip: "+ this.tmpZip);
@@ -47,15 +47,21 @@ var copyTemplate = function () {
                file.end();
                console.info('finished download  ' + self.tmpZip);
                //解压文件
-               self.unzipTemplate();
+               self.unzipTemplate(null,callback);
            });
            curl.on('exit', function(code) {
                if (code != 0) {
                    console.error(code);
+                   callback(false);
                }
            });
        },
-       unzipTemplate: function () {
+       unzipTemplate: function (moduleName,callback) {
+           if(typeof moduleName != 'undefined' && moduleName != null){
+               this.needCopyDir = this.needCopyDir+ "/" + moduleName;
+               this.moduleName = moduleName;
+               this.moduleName_UpperCase = moduleName.toUpperCase();
+           }
            var self = this;
            var unzip = "unzip -o  -d " + self.tmpDir +"  "+ self.tmpZip;
            console.info(unzip);
@@ -64,40 +70,44 @@ var copyTemplate = function () {
            }, function(err,stdOut,stdErr) {
                if (err) {
                    console.error(err);
+                   callback(false);
                }
                else{
                    console.info("unzip ReactEngine-master.zip  at " + self.tmpDir);
                    if(typeof self.moduleName_UpperCase != 'undefined'){
-                       self.replaceContent();
+                       self.replaceContent(callback);
                    }
                }
            });
        },
-       replaceContent: function () {
+       replaceContent: function (callback) {
            var self = this;
            var reg = new RegExp(self.moduleName_UpperCase);
-           var sed = "find " + self.needCopyDir +" -name \"*\" -type file -print | xargs  sed -i \"\" 's"+ reg +self.replacement+"/g' {}";
+           var sed = "find " + self.needCopyDir +" -name \"*\" -type file -print | xargs  sed -i \"\" 's"+ reg +self.replacement+"/g'";
            console.log(sed);
            exec(sed, {
                maxBuffer: 10000 * 1024
            }, function(err,stdOut,stdErr) {
                if (err) {
                    console.error(err);
+                   callback(false);
                }
                else{
                    console.log("finished replaced ....");
-                   self.copyModuleToTemplate();
+                   self.copyModuleToTemplate(callback);
                }
            });
        },
-       copyModuleToTemplate: function () {
+       copyModuleToTemplate: function (callback) {
            var self = this;
            //从tmp文件夹复制module文件夹
            ncp(self.needCopyDir, self.targetDir, function (err) {
                if (err) {
+                   callback(false);
                    return console.error(err);
                }
                console.info("template created at " + self.targetDir);
+               callback(true);
            });
        }
    }
