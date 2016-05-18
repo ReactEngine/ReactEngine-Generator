@@ -57,7 +57,7 @@ yo reactengine:model book
 
 ```
 cd yo-project-dir # 进入你的工程目录
-yo reactengine:module [options] <moduleName>
+yo reactengine:module --type=<moduleType> <moduleName>  #目前moduleType只有一个list
 ```
 
 #### 选项(options)
@@ -73,7 +73,8 @@ yo reactengine:module [options] <moduleName>
 
 | 参数   	  | 	描述 		| 	类型   | 	是否必须 |
 | ----------- | -------------- | ------- | ---------- |
-| moduleName  |    模块名称     | 字符串   |     是      |
+| moduleType  |    模块类型    | 字符串   |      是      |
+| moduleName  |    模块名称     | 字符串   |   是       |
 
 
 #### 实例

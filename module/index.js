@@ -19,16 +19,27 @@ module.exports = generators.Base.extend({
       moduleName_upperCase:moduleName.toUpperCase()
     };
     mkdirp(moduleDir + '/actions');
-
-    this.fs.copyTpl(
+    //根据module的type来复制对应的template
+    var moduleType = this.options.type;
+    //console.log(this._getHasModuleTypes());
+    if(typeof moduleType =='undefined'){//command has no --type option
+      this._errorAction(1);
+    }else {
+      sourceRoot = path.resolve(sourceRoot,'..',moduleType);
+      if(! fs.existsSync(sourceRoot)){ //module type is not exists
+        this._errorAction(2);
+      }else{
+        this.fs.copyTpl(
             sourceRoot+'/**/*',
             moduleDir,
             templateContext
-          );
+        );
+      }
+    }
   },
   constructor: function() {
     generators.Base.apply(this, arguments);
-
+    this.option('type'); //this code can adds option --type for generator :  eg:yo reactengine:module --type=list book  it create module book and module type is list.
     this.argument('moduleName', {
       required: true,
       type: String,
@@ -49,5 +60,44 @@ module.exports = generators.Base.extend({
   writing: function() {
     this._createProjectFileSystem();
   },
+  /**
+   * 获取module 文件夹下面的所有template类型
+   * @returns {*}
+   * @private
+     */
+  _getHasModuleTypes: function () {
+    var sourceRoot = this.sourceRoot();
+    var dir = path.resolve(sourceRoot,'..');
+    var readDir = [];
+    var tempDir = [];
+    if(fs.existsSync(dir)){
+      tempDir = fs.readdirSync(dir);
+    }
+    tempDir.forEach(function (child) {
+      var childPath = path.resolve(dir,child);
+      var stat = fs.statSync(childPath);
+      if (stat.isDirectory() ) {
+        readDir.push(child);
+      }
+    });
+    return readDir;
+  },
+  /**
+   * 命令行输入错误提醒方式
+   * @param type 1:command no --type | 2: module type not exist
+   * @private
+     */
+  _errorAction: function (type) {
+    switch (type){
+      case 1:
+            console.log("command error : please read README.md!");
+            break;
+      case 2:
+            console.log("module type error: please read README.md!");
+            break;
+      default:
+            console.log("system error: please retry again!");
+    }
+  }
 
 });
