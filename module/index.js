@@ -39,7 +39,7 @@ module.exports = generators.Base.extend({
   },
   constructor: function() {
     generators.Base.apply(this, arguments);
-    this.option('--type'); //this code can adds option --type for generator :  eg:yo reactengine:module --type=list book  it create module book and module type is list.
+    this.option('type'); //this code can adds option --type for generator :  eg:yo reactengine:module --type=list book  it create module book and module type is list.
     this.argument('moduleName', {
       required: true,
       type: String,
