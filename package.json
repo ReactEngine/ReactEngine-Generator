@@ -1,8 +1,8 @@
 {
   "name": "generator-reactengine",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "React Engine code generator using Yeoman",
-  "main": "app/index.js",
+  "main": "create/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +16,7 @@
     "yeoman",
     "code",
     "generator",
-		"yeoman-generator"
+    "yeoman-generator"
   ],
   "author": "Jason (ciyinhuang@gmail.com)",
   "license": "MIT",
