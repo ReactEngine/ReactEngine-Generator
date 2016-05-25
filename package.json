@@ -1,8 +1,8 @@
 {
   "name": "generator-reactengine",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "React Engine code generator using Yeoman",
-  "main": "create/index.js",
+  "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -4,57 +4,103 @@ var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
 var yosay = require('yosay');
 var chalk = require('chalk');
-
+var exec = require('child_process').exec;
 module.exports = generators.Base.extend({
-  _createProjectFileSystem: function() {
-   
-  },
 
-  _getPrompts: function() {
-    var prompts = [{
-      name: 'name',
-      message: 'What is the name of your project?',
-      default: 'react-redux-starter',
-    }];
+    constructor: function() {
+        generators.Base.apply(this, arguments);
+    },
 
-    return prompts;
-  },
+    initializing: function() {
 
-  _saveAnswers: function(answers, callback) {
-    this.appName = answers.name;
-    callback();
-  },
+    },
 
-  constructor: function() {
-    generators.Base.apply(this, arguments);
-  },
+    prompting: function() {
+         var prompts = [{
+            type:'list',
+            name: 'create_kind', //创建的种类
+            message: 'please select create type . ',
+            choices: [
+                "project", //创建project
+                "model",
+                "module"
+            ],
+            default: 'model'
+        },
+         {
+             when: function (props) {
+                return  props.create_kind ==='module';
+             },
+             type:'list',
+             name: 'create_type', //对应module的类型
+             message: 'which module type do you want to create ? ',
+             choices: [
+                 "list"
+             ],
+             default: 'list'
+         },
+        {
+             when: function (props) {
+                 return  props.create_kind ==='project';
+             },
+             type : 'input',
+             name : 'create_name',
+             message:'please type what\'s the name of project ? '
+         },
+        {
+            when: function (props) {
+                return  props.create_kind ==='model';
+            },
+           type : 'input',
+           name : 'create_name',
+           message:'please type what\'s the name of model  ? '
+        },
+        {
+            when: function (props) {
+                 return  props.create_kind ==='module';
+            },
+            type : 'input',
+            name : 'create_name',
+            message:'please type what\'s the name of module ? '
+         }
+         ];
 
-  initializing: function() {
-    var message = chalk.bgBlack.bold('\nWelcome to ReactEngine\n') + chalk.underline('reactengine.github.io\n');
-    this.log(yosay(message));
-  },
+        this.prompt(prompts, function (answers) {
+            this.answers = answers;
+            var self = this;
+            if(!this.answers.create_name){
+                console.log("error ! please type name of " + this.answers.create_kind );
+                return;
+            }
+            var create_type_command = "";
+            if(this.answers.create_kind === 'module'){
+                create_type_command = "--type=" + this.answers.create_type;
+            }
+            var yoCommand = "yo reactengine:" + this.answers.create_kind + " " + create_type_command +" " + this.answers.create_name;
+            exec(yoCommand, { maxBuffer: 10000 * 1024 }, function(err,stdOut,stdErr) {
+                if (err) {
+                    console.error(err);
+                }
+                else{
+                    if(stdOut && stdOut.length){
+                        console.log(stdOut);
+                    }else{
+                        console.log("finished create " + self.answers.create_kind +" .");
+                    }
+                }
+            });
+        }.bind(this));
+    },
 
-  prompting: function() {
-    var done = this.async();
+    configuring: function() {
+        this.config.save();
+    },
 
-    this.prompt(this._getPrompts(), function(answers) {
-      this._saveAnswers(answers, done);
-    }.bind(this));
+    writing: function() {
 
-  },
+    },
 
-  configuring: function() {
-    this.config.save();
-  },
+    install: function() {
 
-  writing: function() {
-    this._createProjectFileSystem();
-  },
-
-  install: function() {
-    this.installDependencies({
-      skipInstall: this.options['skip-install'],
-      bower: false,
-    });
-  },
+    },
 });
