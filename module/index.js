@@ -88,16 +88,15 @@ module.exports = generators.Base.extend({
    * @private
      */
   _errorAction: function (type) {
-    var self = this;
     switch (type){
       case 1:
-          self.log("command error : please read README.md!");
+        this.log("command error : please read README.md!");
             break;
       case 2:
-          self.log("module type error: please read README.md!");
+        this.log("module type error: please read README.md!");
             break;
       default:
-          self.log("system error: please retry again!");
+        this.log("system error: please retry again!");
     }
   }
 
