@@ -21,7 +21,7 @@ module.exports = generators.Base.extend({
     mkdirp(moduleDir + '/actions');
     //根据module的type来复制对应的template
     var moduleType = this.options.type;
-    //console.log(this._getHasModuleTypes());
+    //this.log(this._getHasModuleTypes());
     if(typeof moduleType =='undefined'){//command has no --type option
       this._errorAction(1);
     }else {
@@ -88,15 +88,16 @@ module.exports = generators.Base.extend({
    * @private
      */
   _errorAction: function (type) {
+    var self = this;
     switch (type){
       case 1:
-            console.log("command error : please read README.md!");
+          self.log("command error : please read README.md!");
             break;
       case 2:
-            console.log("module type error: please read README.md!");
+          self.log("module type error: please read README.md!");
             break;
       default:
-            console.log("system error: please retry again!");
+          self.log("system error: please retry again!");
     }
   }
 
