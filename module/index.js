@@ -25,7 +25,7 @@ module.exports = generators.Base.extend({
     if(typeof moduleType =='undefined'){//command has no --type option
       this._errorAction(1);
     }else {
-      sourceRoot = path.resolve(sourceRoot,'..',moduleType);
+      sourceRoot = path.resolve(sourceRoot,'..',moduleType + "/templates");
       if(! fs.existsSync(sourceRoot)){ //module type is not exists
         this._errorAction(2);
       }else{
